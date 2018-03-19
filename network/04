@@ -1,2 +1,2 @@
 #!/bin/sh
-
+netstat -r -f inet | grep 'default'
