@@ -1,0 +1,37 @@
+
+Commandes perso :
+df -h ~/
+https://www.debian.org/index.fr.html
+mv ~/Downloads/debian-*-amd64-netinst.iso ~/Library/VirtualBox/
+VirtualBox :
+	Name and operating system - Debian_01_lcabanes, Linux, Debian (64-bit)
+	Memory size - 256 MB
+	Hard disk - Do not create a virtual hard disk
+
+Commandes 'init - Presentation' :
+service sshd status
+apt-get install apache2
+System
+	man df
+	man top
+	man ps
+	man kill
+Reseau
+	man ifconfig
+	man ping
+	man netstat
+	man route
+	man traceroute
+Fichiers
+	man hosts
+	man networks
+	man host.conf
+	man resolv.conf		- man 5 resolver
+	man interfaces
+
+Informations 'init - Presentation' :
+Gestionnaires de packages
+	-> Debian - aptitude, apt
+	-> RedHat - yum
+	-> Mac OSX - macports, brew
+

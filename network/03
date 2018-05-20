@@ -1,2 +1,2 @@
 #!/bin/sh
-ifconfig en1 ether | grep 'ether' | awk '{ print $(NF) }'
+ifconfig en1 ether | awk '/^\tether / { print $(NF) }'

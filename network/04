@@ -1,2 +1,6 @@
 #!/bin/sh
-netstat -r -f inet | grep 'default'
+#	-r :
+#		Show the routing tables
+#	-f inet :
+#		Limit statistics or address control block reports to those of 'inet'
+netstat -r -f inet | awk '/^default/ { print $2 }'

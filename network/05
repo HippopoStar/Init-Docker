@@ -1,2 +1,6 @@
 #!/bin/sh
-nslookup 'slash16.org' | grep 'Server'
+#Commandes alternatives :
+#	dig slash16.org. ns
+#	host -v -t ns slash16.org.
+#	nslookup -querytype=ns slash16.org.
+nslookup -querytype=ns slash16.org. | awk '/internet address/ { print $NF }'
