@@ -5,7 +5,9 @@
 #Creez une tache planifiee pour ce script une fois par semaine a 4h00 du matin
 CRONTAB_TEMPORARY_FILE=/tmp/crontab_list.tmp
 apt-get update && apt-get upgrade
+rm -f $CRONTAB_TEMPORARY_FILE
 crontab -l > $CRONTAB_TEMPORARY_FILE
-echo '0 4 * * 0 apt-get update && apt-get upgrade' >> $CRONTAB_TEMPORARY_FILE
+echo "0 4 * * 0 apt-get update && apt-get upgrade >>\
+	/var/log/update_script.log 2>&1" >> $CRONTAB_TEMPORARY_FILE
 crontab $CRONTAB_TEMPORARY_FILE
-rm $CRONTAB_TEMPORARY_FILE
+rm -f $CRONTAB_TEMPORARY_FILE

@@ -1,4 +1,12 @@
 #!/bin/sh
 #Realiser un script qui affiche la liste des fichiers tries par taille presents
 #dans le dossier passe en argument
+usage () {
+	echo "usage: ${0} <DIRECTORY>"
+}
 
+if test ${#} -ne 1 || test ! -d "${1}" ; then
+	usage
+else
+	ls -S "${1}"
+fi
