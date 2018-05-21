@@ -1,4 +1,6 @@
 #!/bin/sh
+#05.	Identifiez l'IP du serveur DNS qui repond sur le domaine suivant :
+#		slash16.org
 #Commandes alternatives :
 #	dig slash16.org. ns
 #	host -v -t ns slash16.org.

@@ -1,2 +1,3 @@
 #!/bin/sh
+#03.	Identifiez l'addresse MAC de la carte Wi-Fi
 ifconfig en1 ether | awk '/^\tether / { print $(NF) }'

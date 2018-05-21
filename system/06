@@ -1,5 +1,5 @@
 #!/bin/sh
-#Donnez une commande pour redemarrer le service SSH
+#06.	Donnez une commande pour redemarrer le service SSH
 #apt-get install openssh-server
 #Commande alternative :
 #	/etc/init.d/ssh restart

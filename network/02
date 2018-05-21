@@ -1,3 +1,5 @@
 #!/bin/sh
-#ipconfig getifaddr en0
+#02.	Identifiez et affichez les caracteristiques de l'interface Ethenet
+#Commande alternative :
+#	ipconfig getifaddr en0
 ifconfig en0 inet | awk '/^\tinet / { print $2 }'

@@ -1,6 +1,6 @@
 #!/bin/sh
-#Avec la commande precedente, autorisez uniquement les IPs provenant de
-#10.0.0.0/8 a se connecter sur votre systeme
+#18.	Avec la commande precedente, autorisez uniquement les IPs provenant de
+#		10.0.0.0/8 a se connecter sur votre systeme
 #Schema :
 #	iptables -A (chain) -p (protocole) --dport (port) -j (decision)
 #	-A, --append chain rule-specification

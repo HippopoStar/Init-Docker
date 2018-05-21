@@ -1,2 +1,4 @@
 #!/bin/sh
+#01.	Recuperez la liste des interfaces reseau de la machine sans afficher
+#		aucun detail pour ces interfaces. Vraiment juste la list des noms
 ifconfig -l

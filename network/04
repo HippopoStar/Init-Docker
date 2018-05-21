@@ -1,4 +1,5 @@
 #!/bin/sh
+#04.	Identifiez la gateway par defaut dans la table de routage
 #	-r :
 #		Show the routing tables
 #	-f inet :

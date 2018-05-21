@@ -1,6 +1,6 @@
 #!/bin/sh
-#Realiser un script qui affiche la liste des fichiers tries par taille presents
-#dans le dossier passe en argument
+#03.	Realiser un script qui affiche la liste des fichiers tries par taille
+#		presents dans le dossier passe en argument
 usage () {
 	echo "usage: ${0} <DIRECTORY>"
 }

@@ -1,3 +1,3 @@
 #!/bin/sh
-#Quelle commande permet d'afficher l'espace disponible par le systeme ?
+#11.	Quelle commande permet d'afficher l'espace disponible par le systeme ?
 df --output=avail --human-readable / | awk '!/Avail/ { print $1 }'

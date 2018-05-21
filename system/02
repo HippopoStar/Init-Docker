@@ -1,4 +1,4 @@
 #!/bin/sh
-#Quelle commande permet de renommer votre systeme ?
+#02.	Quelle commande permet de renommer votre systeme ?
 #'CTRL' + 'D' pour le constater
 hostname

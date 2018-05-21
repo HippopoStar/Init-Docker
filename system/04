@@ -1,3 +1,3 @@
 #!/bin/sh
-#Quelle commande donne le temps depuis lequel votre systeme est allume ?
+#04.	Quelle commande donne le temps depuis lequel votre systeme est allume ?
 w | awk 'NR == 1 { gsub(",","") ; print $3" "$4 }'

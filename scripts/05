@@ -1,5 +1,5 @@
 #!/bin/sh
-#Realiser un script qui affiche 42
+#05.	Realiser un script qui affiche 42
 echo '         :::      ::::::::'
 echo '       :+:      :+:    :+:'
 echo '     +:+ +:+         +:+'

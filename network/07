@@ -1,4 +1,6 @@
 #!/bin/sh
+#07.	Interrogez un serveur DNS externe sur le nom de domaine slash16.org
+#		(ex : google 8.8.8.8)
 #Commandes alternatives :
 #	dig @8.8.8.8 slash16.org. any
 #	host -t any slash16.org. 8.8.8.8

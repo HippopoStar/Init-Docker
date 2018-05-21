@@ -1,5 +1,6 @@
 #!/bin/sh
-#Trouvez une commande qui permet de lister les processus en cours d'execution
+#13.	Trouvez une commande qui permet de lister les processus en cours
+#		d'execution
 #	a
 #		Lift the BSD-style "only yourself" restriction
 #	u

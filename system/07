@@ -1,4 +1,5 @@
 #!/bin/sh
+#07.	Determinez le PID du service SSHD
 #Commande alternative :
 #	ps axo "pid cmd" | awk '/sshd/ && !/awk/ { print $1 }'
 #	"pid cmd" <=> "pid command" <=> "pid args"
