@@ -1,2 +1,4 @@
 #13.	Determinez le type du serveur
-
+#Evoque dans
+#	nslookup 10.51.1.253
+Il s'agit d'un serveur DHCP

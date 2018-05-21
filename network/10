@@ -1,4 +1,6 @@
 #!/bin/sh
 #10.	Identifiez les differents appareils reseaux entre votre poste et le
 #		domaine slash16.org
-traceroute slash16.org.
+#	-I
+#		Use ICMP ECHO instead of UDP datagrams
+traceroute -I slash16.org.

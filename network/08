@@ -1,2 +1,4 @@
 #08.	Trouvez chez quel hebergeur est le site de Slash16
-
+#Evoque dans
+#dig slash16.org. soa | awk '/slash16.org./ && /SOA/ && /amazon/ { print $0 }'
+AmazonWebService

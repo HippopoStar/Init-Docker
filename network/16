@@ -1,2 +1,3 @@
 #16.	Faites pointer intra.42.fr sur l'adresse suivante : 46.19.122.85
-
+Il faut faire (en ayant les droits) :
+echo "46.19.122.85\tintra.42.fr" >> /etc/hosts
