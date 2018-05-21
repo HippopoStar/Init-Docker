@@ -1,2 +1,9 @@
 #!/bin/sh
-
+#Realiser un script qui affiche 42
+echo '         :::      ::::::::'
+echo '       :+:      :+:    :+:'
+echo '     +:+ +:+         +:+'
+echo '   +#+  +:+       +#+'
+echo ' +#+#+#+#+#+   +#+'
+echo '      #+#    #+#'
+echo '     ###   ########.fr'

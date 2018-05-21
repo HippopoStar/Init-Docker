@@ -1,2 +1,5 @@
 #!/bin/sh
-
+#Commande alternative :
+#	ps axo "pid cmd" | awk '/sshd/ && !/awk/ { print $1 }'
+#	"pid cmd" <=> "pid command" <=> "pid args"
+sevice sshd status | awk '/Main PID:/ { print $3 }'

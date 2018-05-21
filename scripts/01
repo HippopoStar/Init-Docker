@@ -1,2 +1,7 @@
 #!/bin/sh
-
+#Realiser un script qui affiche seulement le login, le UID et le Path de chaque
+#entree du fichier /etc/passwd
+#Format du fichier /etc/passwd :
+#	1.Username 2.Password 3.User_ID_(UID) 4.Group_ID_(GID) 5.User_ID_Info
+#	6.Home_directory 7.Command/shell
+awk -F":" '{ print $1"\t"$3"\t"$6 }' /etc/passwd

@@ -1,2 +1,11 @@
 #!/bin/sh
-
+#Realiser un script qui met a jour l'ensemble des sources de package, puis de
+#vos packages et qui log l'ensemble dans un fichier nomme
+#/var/log/update_script.log
+#Creez une tache planifiee pour ce script une fois par semaine a 4h00 du matin
+CRONTAB_TEMPORARY_FILE=/tmp/crontab_list.tmp
+apt-get update && apt-get upgrade
+crontab -l > $CRONTAB_TEMPORARY_FILE
+echo '0 4 * * 0 apt-get update && apt-get upgrade' >> $CRONTAB_TEMPORARY_FILE
+crontab $CRONTAB_TEMPORARY_FILE
+rm $CRONTAB_TEMPORARY_FILE

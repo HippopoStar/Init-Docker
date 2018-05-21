@@ -1,2 +1,6 @@
 #!/bin/sh
-
+#Donnez une commande qui determine l'etat du service SSH
+#apt-get install openssh-server
+#Commande alternative :
+#	/etc/init.d/ssh status
+service sshd status

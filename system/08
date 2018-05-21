@@ -1,0 +1,2 @@
+#Quel fichier contient les cles RSA autorisees a se connecter via SSH ?
+~/.ssh/authorized_keys

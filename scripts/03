@@ -1,2 +1,4 @@
 #!/bin/sh
+#Realiser un script qui affiche la liste des fichiers tries par taille presents
+#dans le dossier passe en argument
 

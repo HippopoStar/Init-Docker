@@ -1,2 +1,9 @@
 #!/bin/sh
-
+#Trouvez une commande qui permet de lister les processus en cours d'execution
+#	a
+#		Lift the BSD-style "only yourself" restriction
+#	u
+#		Display user-oriented format
+#	x
+#		Lift the BSD-style "must have a tty" restrictioniction
+ps aux

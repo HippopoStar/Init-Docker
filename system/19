@@ -1,2 +1,3 @@
 #!/bin/sh
-
+#Avec la commande precedente, interdisez le reste
+iptables -P INPUT DROP

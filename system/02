@@ -1,2 +1,4 @@
 #!/bin/sh
-sudo hostname
+#Quelle commande permet de renommer votre systeme ?
+#'CTRL' + 'D' pour le constater
+hostname

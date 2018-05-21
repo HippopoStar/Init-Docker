@@ -6,7 +6,14 @@ mv ~/Downloads/debian-*-amd64-netinst.iso ~/Library/VirtualBox/
 VirtualBox :
 	Name and operating system - Debian_01_lcabanes, Linux, Debian (64-bit)
 	Memory size - 256 MB
-	Hard disk - Do not create a virtual hard disk
+	1er demarrage :
+		login : root
+		password : openclqssroo;s
+		cd >etc>defqult>
+		vi; keyboqrd
+		'fr' -> 'us'
+		'ESC' .za
+		init )
 
 Commandes 'init - Presentation' :
 service sshd status

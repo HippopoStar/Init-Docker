@@ -1,2 +1,3 @@
 #!/bin/sh
-
+#Trouvez une commande qui donne la liste des regles de pare-feu
+iptables -L

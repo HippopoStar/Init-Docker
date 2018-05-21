@@ -1,2 +1,3 @@
 #!/bin/sh
-sudo du --block-size=1 --max-depth=1 /var/
+#Determinez la taille exacte de chaque dossier de /var
+du --block-size=1 --max-depth=1 /var/

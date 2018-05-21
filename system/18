@@ -1,2 +1,11 @@
 #!/bin/sh
-
+#Avec la commande precedente, autorisez uniquement les IPs provenant de
+#10.0.0.0/8 a se connecter sur votre systeme
+#Schema :
+#	iptables -A (chain) -p (protocole) --dport (port) -j (decision)
+#	-A, --append chain rule-specification
+#	-p, --protocol protocol
+#	--destination-port, --dport port[:port]		(man -s 8 iptables-extensions)
+#	-j, --jump target
+#	-s, --source address[/mask][,...]
+iptables -A INPUT -s 10.0.0.0/8 -j ACCEPT

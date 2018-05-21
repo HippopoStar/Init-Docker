@@ -1,2 +1,4 @@
 #!/bin/sh
-
+#Quelle commande permet de savoir quelles personnes sont connectees sur le
+#systeme ?
+who | awk '{ print $1 }'
