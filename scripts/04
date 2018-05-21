@@ -7,7 +7,7 @@ CRONTAB_TEMPORARY_FILE=/tmp/crontab.tmp
 rm -f $SCRIPT_FILE
 echo '#!/bin/sh' > $SCRIPT_FILE
 echo 'OLD_CHKSUM=`cat /root/checksum_crontab.tmp`' >> $SCRIPT_FILE
-echo "NEW_CHKSUM=\`MD5SUM /etc/crontab | awk '{ print \$1 }'\`" >> $SCRIPT_FILE
+echo "NEW_CHKSUM=\`md5sum /etc/crontab | awk '{ print \$1 }'\`" >> $SCRIPT_FILE
 echo 'if test "x$NEW_CHKSUM" != "x$OLD_CHKSUM" ; then' >> $SCRIPT_FILE
 echo "\tmail -s \"La crontab pour root a ete modifiee\"\
 	root@localhost < /etc/crontab" >> $SCRIPT_FILE
