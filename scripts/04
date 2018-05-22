@@ -15,9 +15,9 @@ if test ${#} -gt 1 || ( test ${#} -eq 1 && test "xS{1}" != 'xLAUNCH' ) ; then
 	usage
 elif test ${#} -eq 0 ; then
 	if test ! -e ${SCRIPT_FILE} ; then
-		cp ${0} ${SCRIPT_FILE}
+		cp ${0} ~/
 	fi
-	if test "x`crontab -l | awk -v AWK_CRONTAB_LINE=\"${CRONTAB_LINE}\" '/^$(AWK_CRONTAB_LINE)$/ { print $(0) }'`" = "x${CRONTAB_LINE}" ; then
+	if test "x`crontab -l | awk -v AWK_CRONTAB_LINE=\"${CRONTAB_LINE}\" 'BEGIN { pattern = AWK_CRONTAB_LINE } ; $NR ~ pattern { print $0 }'`" = "x${CRONTAB_LINE}" ; then
 		echo 'Tache deja presente dans la crontab'
 	else
 		rm -f ${CRONTAB_TEMPORARY_FILE}
@@ -25,13 +25,13 @@ elif test ${#} -eq 0 ; then
 		echo "${CRONTAB_LINE}" >> ${CRONTAB_TEMPORARY_FILE}
 		crontab ${CRONTAB_TEMPORARY_FILE}
 		rm -f ${CRONTAB_TEMPORARY_FILE}
-		`md5sum /etc/crontab | awk '{ print $(1) }'` > ${CHKSUM_FILE}
+		`md5sum /etc/crontab | awk '{ print $1 }'` > ${CHKSUM_FILE}
 	fi
 else
 	OLD_CHKSUM=`cat ${CHKSUM_FILE}`
-	NEW_CHKSUM=`md5sum /etc/crontab | awk '{ print $(1) }'`
+	NEW_CHKSUM=`md5sum /etc/crontab | awk '{ print $1 }'`
 	if test "x${NEW_CHKSUM}" != "x${OLD_CHKSUM}" ; then
-		mail -s 'La crontab pour cet utilisateur a ete modifiee' root@localhost < `{ date ; echo '' ; cat /etc/crontab ; }`
+		mail -u -s 'La crontab pour cet utilisateur a ete modifiee' < `{ date ; echo '' ; cat /etc/crontab ; }`
 		echo "${NEW_CHKSUM}" > ${CHKSUM_FILE}
 	fi
 fi
