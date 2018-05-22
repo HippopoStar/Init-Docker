@@ -2,20 +2,32 @@
 #04.	Realiser un script qui permet de surveiller les modifications du fichier
 #		/etc/crontab et envoie un mail a root si celui-ci a ete modifie. Creez
 #		une tache planifiee pour ce script tous les jours a minuit
-SCRIPT_FILE=/root/monitor_crontab.sh
+SCRIPT_FILE="~/`basename ${0}`"
+CRONTAB_LINE="0 0 * * * ${SCRIPT_FILE} LAUNCH"
 CRONTAB_TEMPORARY_FILE=/tmp/crontab.tmp
-rm -f $SCRIPT_FILE
-echo '#!/bin/sh' > $SCRIPT_FILE
-echo 'OLD_CHKSUM=`cat /root/checksum_crontab.tmp`' >> $SCRIPT_FILE
-echo "NEW_CHKSUM=\`md5sum /etc/crontab | awk '{ print \$1 }'\`" >> $SCRIPT_FILE
-echo 'if test "x$NEW_CHKSUM" != "x$OLD_CHKSUM" ; then' >> $SCRIPT_FILE
-echo "\tmail -s \"La crontab pour root a ete modifiee\"\
-	root@localhost < /etc/crontab" >> $SCRIPT_FILE
-echo "\techo \"\$NEW_CHKSUM\" > /root/checksum_crontab.tmp" >> $SCRIPT_FILE
-echo 'fi' >> $SCRIPT_FILE
-chmod u+x $SCRIPT_FILE
-rm -f $CRONTAB_TEMPORARY_FILE
-crontab -l > $CRONTAB_TEMPORARY_FILE
-echo "0 0 * * * sh $SCRIPT_FILE" >> $CRONTAB_TEMPORARY_FILE
-crontab $CRONTAB_TEMPORARY_FILE
-rm -f $CRONTAB_TEMPORARY_FILE
+CHKSUM_FILE=~/crontab.chksum
+
+usage () {
+	echo "usage: ${0} [LAUNCH]"
+}
+
+if test ${#} -gt 1 || ( test ${#} -eq 1 && test "xS{1}" != 'xLAUNCH' ) ; then
+	usage
+elif test ${#} -eq 0 ; then
+	if test "x`crontab -l | awk -v AWK_CRONTAB_LINE=\"${CRONTAB_LINE}\" '/^$(AWK_CRONTAB_LINE)$/ { print $(0) }'`" = "x${CRONTAB_LINE}" ; then
+		echo 'Tache deja presente dans la crontab'
+	else
+		rm -f ${CRONTAB_TEMPORARY_FILE}
+		crontab -l > ${CRONTAB_TEMPORARY_FILE}
+		echo "${CRONTAB_LINE}" >> ${CRONTAB_TEMPORARY_FILE}
+		crontab ${CRONTAB_TEMPORARY_FILE}
+		rm -f ${CRONTAB_TEMPORARY_FILE}
+	fi
+else
+	OLD_CHKSUM=`cat ${CHKSUM_FILE}`
+	NEW_CHKSUM=`md5sum /etc/crontab | awk '{ print $(1) }'`
+	if test "x${NEW_CHKSUM}" != "x${OLD_CHKSUM}" ; then
+		mail -s 'La crontab pour cet utilisateur a ete modifiee' root@localhost < `{ date ; echo '' ; cat /etc/crontab ; }`
+		echo "${NEW_CHKSUM}" > ${CHKSUM_FILE}
+	fi
+fi
