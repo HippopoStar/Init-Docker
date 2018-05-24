@@ -2,13 +2,19 @@
 #04.	Realiser un script qui permet de surveiller les modifications du fichier
 #		/etc/crontab et envoie un mail a root si celui-ci a ete modifie. Creez
 #		une tache planifiee pour ce script tous les jours a minuit
+
+#Note :
+#	'awk' est capricieux losqu'il est question de lui transmettre une
+#	variable shell contenant des WildCards en argument et de les evaluer
+#	en tant qu'expression reguliere en cherchant une correspondance de pattern
+
 USER="`{ cd ~/ ; pwd | awk -F \"/\" '{ print $NF }' ; }`"
 TO_CHECK=/etc/crontab
-SCRIPT_FILE="~/`basename ${0}`"
+SCRIPT_FILE=~/`basename ${0}`
 CRONTAB_LINE="0 0 * * * ${SCRIPT_FILE} LAUNCH"
 CRONTAB_WITNESS="${SCRIPT_FILE} LAUNCH"
 CRONTAB_TEMPORARY_FILE=/tmp/crontab.tmp
-CHKSUM_FILE=~/crontab.chksum
+CHKSUM_FILE=~/crontab_`basename ${0}`.chksum
 
 usage () {
 	echo "usage: ${0} [LAUNCH]"
@@ -39,7 +45,7 @@ else
 	OLD_CHKSUM=`cat ${CHKSUM_FILE}`
 	NEW_CHKSUM=`md5sum ${TO_CHECK} | awk '{ print $1 }'`
 	if test "x${NEW_CHKSUM}" != "x${OLD_CHKSUM}" ; then
-		echo "`{ date ; echo '' ; cat ${TO_CHECK} ; }`" | mail -s 'Crontab_Report - La crontab pour cet utilisateur a ete modifiee' "${USER}@localhost"
+		echo "`{ date ; echo '' ; cat ${TO_CHECK} ; }`" | mail -s "Crontab_Report - Le fichier '${TO_CHECK}' a recemment ete altere" "${USER}@localhost"
 		echo "${NEW_CHKSUM}" > ${CHKSUM_FILE}
 	fi
 fi
