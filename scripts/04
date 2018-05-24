@@ -2,6 +2,8 @@
 #04.	Realiser un script qui permet de surveiller les modifications du fichier
 #		/etc/crontab et envoie un mail a root si celui-ci a ete modifie. Creez
 #		une tache planifiee pour ce script tous les jours a minuit
+USER="`{ cd ~/ ; pwd | awk -F \"/\" '{ print $NF }' ; }`"
+TO_CHECK=/etc/crontab
 SCRIPT_FILE="~/`basename ${0}`"
 CRONTAB_LINE="0 0 * * * ${SCRIPT_FILE} LAUNCH"
 CRONTAB_WITNESS="${SCRIPT_FILE} LAUNCH"
@@ -12,11 +14,14 @@ usage () {
 	echo "usage: ${0} [LAUNCH]"
 }
 
-if test ${#} -gt 1 || ( test ${#} -eq 1 && test "xS{1}" != 'xLAUNCH' ) ; then
+if test ${#} -gt 1 || ( test ${#} -eq 1 && test "x${1}" != 'xLAUNCH' ) ; then
 	usage
+elif test ! -e ${TO_CHECK} ; then
+	echo "Le fichier specifie '${TO_CHECK}' n'existe pas !"
 elif test ${#} -eq 0 ; then
 	if test ! -e ${SCRIPT_FILE} ; then
 		cp ${0} ~/
+		echo "Script duplique a l'emplacement '${SCRIPT_FILE}'"
 	fi
 	if test "x`crontab -l | awk -v pat=\"${CRONTAB_WITNESS}\" '$0 ~ pat { print $0 }' | awk 'END { print $0 }'`" = "x${CRONTAB_LINE}" ; then
 		echo 'Tache deja presente dans la crontab'
@@ -25,14 +30,16 @@ elif test ${#} -eq 0 ; then
 		crontab -l > ${CRONTAB_TEMPORARY_FILE}
 		echo "${CRONTAB_LINE}" >> ${CRONTAB_TEMPORARY_FILE}
 		crontab ${CRONTAB_TEMPORARY_FILE}
+		echo 'Tache ajoutee a la crontab'
 		rm -f ${CRONTAB_TEMPORARY_FILE}
-		md5sum /etc/crontab | awk '{ print $1 }' > ${CHKSUM_FILE}
+		md5sum ${TO_CHECK} | awk '{ print $1 }' > ${CHKSUM_FILE}
+		echo "CheckSum effectue et enregistre a l'emplacement '${CHKSUM_FILE}'"
 	fi
 else
 	OLD_CHKSUM=`cat ${CHKSUM_FILE}`
-	NEW_CHKSUM=`md5sum /etc/crontab | awk '{ print $1 }'`
+	NEW_CHKSUM=`md5sum ${TO_CHECK} | awk '{ print $1 }'`
 	if test "x${NEW_CHKSUM}" != "x${OLD_CHKSUM}" ; then
-		mail -u -s 'La crontab pour cet utilisateur a ete modifiee' < `{ date ; echo '' ; cat /etc/crontab ; }`
+		echo "`{ date ; echo '' ; cat ${TO_CHECK} ; }`" | mail -s 'Crontab_Report - La crontab pour cet utilisateur a ete modifiee' "${USER}@localhost"
 		echo "${NEW_CHKSUM}" > ${CHKSUM_FILE}
 	fi
 fi
