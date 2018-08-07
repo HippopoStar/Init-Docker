@@ -1,4 +1,12 @@
 
+Network
+09. Oubli de repondre
+
+System
+07. Faute de frappe
+10. Ne connais pas la reponse
+15. Commande non fonctionnelle
+
 Commandes perso :
 df -h ~/
 https://www.debian.org/index.fr.html
