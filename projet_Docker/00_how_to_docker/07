@@ -1,0 +1,4 @@
+#!/bin/bash
+# GNU Linux Magazine France - Hors Serie 98 - Page 49
+# curl -I "$(docker-machine ip Char)":5000
+docker inspect overlord | awk '/"IPAddress"/'

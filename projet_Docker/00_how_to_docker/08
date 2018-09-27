@@ -1,0 +1,3 @@
+#!/bin/bash
+# GNU Linux Magazine France - Hors Serie 98 - Page 52
+docker run --rm -t -i alpine sh

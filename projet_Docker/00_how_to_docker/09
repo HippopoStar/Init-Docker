@@ -1,0 +1,11 @@
+#!/bin/bash
+# Prealablement :
+# - de preference ouvrir un nouveau terminal ('COMMAND' + 'N')
+# - quitter 'fish' qui devrait alors s'etre lance par defaut ('CTRL' + 'D')
+# - 'eval "$(docker-machine env Char)" (voir q02)
+# - 'docker run --rm -ti debian bash'
+apt-get update && apt-get install gcc -y && apt-get install git -y
+# Afin d'effectuer un test :
+# git clone https://github.com/HippopoStar/piscine42.git
+# gcc -o ft_print_alphabet.out ./piscine42/backupj06/ex01/ft_print_program_name.c ./piscine42/backupj06/ex00/ft_putchar.c
+# ./ft_print_alphabet.out
