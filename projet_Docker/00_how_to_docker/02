@@ -1,0 +1,3 @@
+#!/bin/bash
+# https://docs.docker.com/machine/get-started/#create-a-machine
+docker-machine ip Char
