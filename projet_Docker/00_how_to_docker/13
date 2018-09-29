@@ -1,0 +1,4 @@
+#!/bin/sh
+# (q.13)
+# GNU Linux Magazine France - Hors Serie 98 - Page 50 (exec)
+docker exec spawning-pool env

@@ -1,4 +1,6 @@
 #!/bin/sh
 # (q.01)
+# Afin d'executer ce script dans le shell courant et non dans un fork de
+# celui-ci, lancez '. ./01' (sh) ou 'source ./01' (bash)
 # https://docs.docker.com/machine/get-started/#create-a-machine
 docker-machine create --driver virtualbox Char

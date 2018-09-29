@@ -1,7 +1,7 @@
 #!/bin/sh
 # (q.03)
 # Afin d'executer ce script dans le shell courant et non dans un fork de
-# celui-ci, lancez ". ./03" ou "source ./03"
+# celui-ci, lancez '. ./03' (sh) ou 'source ./03' (bash)
 # https://docs.docker.com/machine/get-started/#create-a-machine
 # Si necessaire, retirez prealablement ces variables de l'environnement courant du terminal :
 # eval "$(docker-machine env -u)"
