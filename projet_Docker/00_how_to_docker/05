@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/bin/sh
+# (q.05)
 # GNU Linux Magazine France - Hors Serie 98 - Page 52
 docker run hello-world

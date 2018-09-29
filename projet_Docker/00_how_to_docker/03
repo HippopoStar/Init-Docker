@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+# (q.03)
 # Afin d'executer ce script dans le shell courant et non dans un fork de
 # celui-ci, lancez ". ./03" ou "source ./03"
 # https://docs.docker.com/machine/get-started/#create-a-machine

@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/bin/sh
+# (q.02)
 # https://docs.docker.com/machine/get-started/#create-a-machine
 docker-machine ip Char

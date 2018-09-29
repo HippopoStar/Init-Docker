@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/bin/sh
+# (q.04)
 # https://hub.docker.com/_/hello-world/
 docker pull hello-world

@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/bin/sh
+# (q.10)
 # GNU Linux Magazine France - Hors Serie 98 - Page 51
 docker volume create hatchery

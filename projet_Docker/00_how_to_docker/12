@@ -1,0 +1,10 @@
+#!/bin/sh
+# (q.12)
+# GNU Linux Magazine France - HorsSerie 98 - Pages 51 (--volume), 55 (-e)
+# https://hub.docker.com/_/mysql/
+# https://docs.docker.com/storage/volumes/#start-a-container-with-a-volume
+docker run --name spawning-pool -d \
+	--volume hatchery:/var/lib/mysql \
+	-e MYSQL_ROOT_PASSWORD=Kerrigan \
+	-e MYSQL_DATABASE=zerglings \
+	--restart=unless-stopped mysql

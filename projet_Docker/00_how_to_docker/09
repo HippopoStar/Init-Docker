@@ -1,8 +1,9 @@
-#!/bin/bash
+#!/bin/sh
+# (q.09)
 # Prealablement :
 # - de preference ouvrir un nouveau terminal ('COMMAND' + 'N')
 # - quitter 'fish' qui devrait alors s'etre lance par defaut ('CTRL' + 'D')
-# - 'eval "$(docker-machine env Char)" (voir q02)
+# - 'eval "$(docker-machine env Char)" (voir q.02)
 # - 'docker run --rm -ti debian bash'
 apt-get update && apt-get install gcc -y && apt-get install git -y
 # Afin d'effectuer un test :
