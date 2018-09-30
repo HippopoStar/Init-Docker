@@ -1,0 +1,28 @@
+#!/bin/sh
+# (q.19)
+# GNU Linux Magazine France - Pages 49 (Curl), 50 (start -ia), 51 (Bind mounts)
+# https://docs.docker.com/storage/bind-mounts/
+# To clean :
+# - docker rm Abathur
+# - docker-machine ssh Char
+# - rm -rf /home/Abathur_s_root_folder/
+# docker start -ia Abathur
+echo 'pip install flask'
+docker run --name Abathur -ti \
+	--volume /Users/lcabanes/Abathur_s_root_folder/:/root/ \
+	--net=bridge -p 3000:3000 \
+	python:2-slim bash -c \
+	"pip install flask \
+	&& mkdir -p /root/flask/ \
+	&& touch /root/flask/hello.py \
+	&& chmod a+x /root/flask/hello.py \
+	&& echo 'from flask import Flask' >> /root/flask/hello.py \
+	&& echo 'app = Flask(__name__)' >> /root/flask/hello.py \
+	&& echo '' >> /root/flask/hello.py \
+	&& echo \"@app.route(\\\"/\\\")\" >> /root/flask/hello.py \
+	&& echo 'def hello():' >> /root/flask/hello.py \
+	&& echo -e \"\\treturn \\\"<h1>Hello World</h1>\\\"\" >> /root/flask/hello.py \
+	&& cat /root/flask/hello.py \
+	&& export FLASK_APP=/root/flask/hello.py \
+	&& flask run --host=0.0.0.0 --port=3000 \
+	&& bash"

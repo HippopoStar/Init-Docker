@@ -1,0 +1,7 @@
+#!/bin/sh
+# (q.15)
+# https://hub.docker.com/r/phpmyadmin/phpmyadmin/
+docker run --name roach-warden -d \
+	--link spawning-pool:db \
+	--net=bridge -p 8081:80 \
+	phpmyadmin/phpmyadmin

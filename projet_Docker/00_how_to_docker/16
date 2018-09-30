@@ -1,0 +1,5 @@
+#!/bin/sh
+# (q.16)
+# docker --help
+# docker logs --help
+docker logs -f spawning-pool
