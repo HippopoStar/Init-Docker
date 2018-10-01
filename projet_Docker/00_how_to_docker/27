@@ -1,0 +1,5 @@
+#!/bin/sh
+# (q.27)
+# docker service --help
+# docker service ps engineering-bay
+docker service logs -f $(docker service ps engineering-bay | awk 'NR==2 { print $1 }')

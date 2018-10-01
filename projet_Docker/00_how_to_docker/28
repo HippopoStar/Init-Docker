@@ -1,0 +1,9 @@
+#!/bin/sh
+# (q.28)
+# https://hub.docker.com/r/42school/marine-squad/
+docker service create --name marines \
+	-e OC_USERNAME=Jim_Raynor \
+	-e OC_PASSWD=Kerrigan \
+	--replicas=2 \
+	--network overmind \
+	42school/marine-squad

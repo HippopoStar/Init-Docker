@@ -1,0 +1,5 @@
+#!/bin/sh
+# https://docs.docker.com/engine/swarm/swarm-tutorial/add-nodes/
+JOIN_TOKEN_WORKER="$(docker swarm join-token worker | awk '/^    docker swarm join/ { print $0 }')"
+echo "${JOIN_TOKEN_WORKER}"
+docker-machine ssh Aiur sh -c "\"${JOIN_TOKEN_WORKER}\""

@@ -1,0 +1,15 @@
+#!/bin/sh
+# (q.24)
+# https://docs.docker.com/network/network-tutorial-overlay/
+# docker service ls
+# docker network inspect overmind
+# https://hub.docker.com/_/rabbitmq/
+# docker service logs orbital-command
+# docker service create --help
+docker service create \
+	--hostname Char \
+	--name orbital-command \
+	-e RABBITMQ_DEFAULT_USER=Jim_Raynor \
+	-e RABBITMQ_DEFAULT_PASS=Kerrigan \
+	--network overmind \
+	rabbitmq

@@ -1,0 +1,6 @@
+#!/bin/sh
+# (q.30)
+# docker service scale --help
+# docker service ps marines
+# docker service logs marines
+docker service scale marines=20

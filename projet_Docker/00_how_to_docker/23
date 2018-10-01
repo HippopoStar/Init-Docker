@@ -1,0 +1,6 @@
+#!/bin/sh
+# (q.23)
+# https://docs.docker.com/network/overlay/
+# https://docs.docker.com/network/network-tutorial-overlay/
+# docker network ls
+docker network create -d overlay overmind

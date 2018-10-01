@@ -1,0 +1,3 @@
+#!/bin/sh
+# (q.29)
+docker service ps marines

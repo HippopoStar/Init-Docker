@@ -1,0 +1,3 @@
+#!/bin/sh
+# (q.31)
+docker service rm $(docker service ls | awk 'NR>1 { print $1 }')
