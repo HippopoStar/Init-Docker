@@ -32,6 +32,16 @@ if test 'xy' = "x${YES_OR_NO}" ; then
 			if test 'xy' = "x${YES_OR_NO}" ; then
 				echo "${CYAN}docker-machine create --driver virtualbox Char${END_OF_COLOR}"
 				docker-machine create --driver virtualbox Char
+				echo "${CYAN}docker-machine ls${END_OF_COLOR}"
+				docker-machine ls
+				echo "${CYAN}docker volume ls${END_OF_COLOR}"
+				docker volume ls
+				echo "${GREEN}Voulez-vous creer le volume '${END_OF_COLOR}hatchery${GREEN}' ?${END_OF_COLOR} [y/n]"
+				YES_OR_NO="$(read -e)"
+				if test 'xy' = "x${YES_OR_NO}" ; then
+					echo "${CYAN}docker volume create hatchery${END_OF_COLOR}"
+					docker volume create hatchery
+				fi
 			fi
 		fi
 	fi
@@ -46,5 +56,13 @@ if test 'xy' = "x${YES_OR_NO}" ; then
 		env
 		echo "${CYAN}docker-machine ip Char${END_OF_COLOR}"
 		docker-machine ip Char
+		echo "${CYAN}docker node ls${END_OF_COLOR}"
+		docker node ls
+		echo "${CYAN}docker service ls${END_OF_COLOR}"
+		docker service ls
+		echo "${CYAN}docker volume ls${END_OF_COLOR}"
+		docker volume ls
+		echo "${CYAN}docker ps -a${END_OF_COLOR}"
+		docker ps -a
 	fi
 fi

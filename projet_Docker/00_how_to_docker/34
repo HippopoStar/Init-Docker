@@ -1,0 +1,4 @@
+#!/bin/sh
+# (q.34)
+# rm -rf /Users/lcabanes/.docker/machine/machines/Aiur/
+docker-machine rm -y Aiur
