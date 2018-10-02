@@ -3,6 +3,8 @@
 # GNU Linux Magazine France - Pages 49 (Curl), 50 (start -ia), 51 (Bind mounts)
 # https://docs.docker.com/storage/bind-mounts/
 # http://flask.pocoo.org/
+# http://flask.pocoo.org/docs/1.0/quickstart/
+# flask run --help
 # To clean :
 # - docker rm Abathur
 # - docker-machine ssh Char

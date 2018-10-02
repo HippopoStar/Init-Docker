@@ -54,6 +54,10 @@ if test 'xy' = "x${YES_OR_NO}" ; then
 		eval "$(docker-machine env Char)"
 		echo "${CYAN}env${END_OF_COLOR}"
 		env
+		echo "${CYAN}ls -la /Users/lcabanes/.docker/machine/machines/${END_OF_COLOR}"
+		ls -la /Users/lcabanes/.docker/machine/machines/
+		echo "${CYAN}docker-machine ssh Char sudo ls /var/lib/docker/${END_OF_COLOR}"
+		docker-machine ssh Char sudo ls /var/lib/docker/
 		echo "${CYAN}docker-machine ip Char${END_OF_COLOR}"
 		docker-machine ip Char
 		echo "${CYAN}docker node ls${END_OF_COLOR}"

@@ -1,3 +1,5 @@
 #!/bin/sh
 # (q.33)
+# GNU Linux Magazine France - Hors-Serie 98 - Page 60
+# docker rmi [...]
 docker image rm $(docker image ls | awk 'NR>1 { print $3 }')
