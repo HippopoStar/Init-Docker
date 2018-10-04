@@ -1,9 +1,12 @@
 # GNU Linux Magazine France - Hors Serie 98 - Pages 51 (--rm), 55
 # https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
-# docker build --tag ex00_img ./
-# docker run --name ex00_ctn -ti --rm ex00_img
-# docker rm ex00_ctn (dans le cas '--rm' non active au lancement)
-# docker rmi ex00_img
+
+# docker build --tag ex00 ./
+# docker run --name ex00_ctn -ti --rm ex00
+
+# docker rm ex00 (dans le cas '--rm' non active au lancement)
+# docker rmi ex00
+
 # docker-machine ssh Char env
 # docker-machine ssh Char sudo ls /var/lib/docker/
 

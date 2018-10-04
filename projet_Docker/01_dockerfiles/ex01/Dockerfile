@@ -1,11 +1,14 @@
 # BYOTSS : Build Your Own TeamSpeak Server
 # GNU Linux Magazine France - Hors-Serie 98 - Page 56 (EXPOSE)
+# https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 # https://hub.docker.com/_/teamspeak/
 # https://github.com/TeamSpeak-Systems/teamspeak-linux-docker-images/blob/master/alpine/
 # https://www.teamspeak.com/en/downloads#server
+
 # docker build --tag ex01 ./
 # docker run --name ex01 -p 9987:9987/udp -p 10011:10011 -p 30033:30033 --rm ex01
-# docker rm ex01
+
+# docker rm ex01 (dans le cas '--rm' non active au lancement)
 # docker rmi ex01
 
 FROM debian

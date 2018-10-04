@@ -96,3 +96,4 @@ if test 'xy' = "x${YES_OR_NO}" ; then
 		fi
 	fi
 fi
+echo "'CMD' + 'RightClick' https://cdn.intra.42.fr/pdf/pdf/1007/docker.fr.pdf"
