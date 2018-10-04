@@ -60,13 +60,39 @@ if test 'xy' = "x${YES_OR_NO}" ; then
 		docker-machine ssh Char sudo ls /var/lib/docker/
 		echo "${CYAN}docker-machine ip Char${END_OF_COLOR}"
 		docker-machine ip Char
+		echo "${CYAN}docker volume ls${END_OF_COLOR}"
+		docker volume ls
 		echo "${CYAN}docker node ls${END_OF_COLOR}"
 		docker node ls
 		echo "${CYAN}docker service ls${END_OF_COLOR}"
 		docker service ls
-		echo "${CYAN}docker volume ls${END_OF_COLOR}"
-		docker volume ls
+		echo "${GREEN}Voulez-vous forcer l'arret et supprimer l'ensemble des services du swarm local ?${END_OF_COLOR} [y/n]"
+		YES_OR_NO="$(read -e)"
+		if test 'xy' = "x${YES_OR_NO}" ; then
+			echo "${CYAN}docker service rm $(docker service ls | awk 'NR>1 { print $1 }')${END_OF_COLOR}"
+			docker service rm $(docker service ls | awk 'NR>1 { print $1 }')
+			echo "${CYAN}docker service ls${END_OF_COLOR}"
+			docker service ls
+		fi
 		echo "${CYAN}docker ps -a${END_OF_COLOR}"
 		docker ps -a
+		echo "${GREEN}Voulez-vous forcer l'arret et supprimer l'ensemble des containers ?${END_OF_COLOR} [y/n]"
+		YES_OR_NO="$(read -e)"
+		if test 'xy' = "x${YES_OR_NO}" ; then
+			echo "${CYAN}docker rm -f $(docker ps -a | awk 'NR>1 { print $1 }')${END_OF_COLOR}"
+			docker rm -f $(docker ps -a | awk 'NR>1 { print $1 }')
+			echo "${CYAN}docker ps -a${END_OF_COLOR}"
+			docker ps -a
+		fi
+		echo "${CYAN}docker image ls${END_OF_COLOR}"
+		docker image ls
+		echo "${GREEN}Voulez-vous supprimer l'ensemble des images de container stockee sur la machine virtuelle ${END_OF_COLOR}Char${GREEN} ?${END_OF_COLOR} [y/n]"
+		YES_OR_NO="$(read -e)"
+		if test 'xy' = "x${YES_OR_NO}" ; then
+			echo "${CYAN}docker rmi $(docker image ls | awk 'NR>1 { print $3 }')${END_OF_COLOR}"
+			docker rmi $(docker image ls | awk 'NR>1 { print $3 }')
+			echo "${CYAN}docker image ls${END_OF_COLOR}"
+			docker image ls
+		fi
 	fi
 fi
