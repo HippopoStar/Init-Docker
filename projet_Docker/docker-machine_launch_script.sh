@@ -32,6 +32,10 @@ if test 'xy' = "x${YES_OR_NO}" ; then
 			if test 'xy' = "x${YES_OR_NO}" ; then
 				echo "${CYAN}docker-machine create --driver virtualbox Char${END_OF_COLOR}"
 				docker-machine create --driver virtualbox Char
+				echo "${CYAN}mv /Users/lcabanes/.docker/machine/machines/Char /sgoinfre/goinfre/Perso/lcabanes/docker-machine_folder/${END_OF_COLOR}"
+				mv /Users/lcabanes/.docker/machine/machines/Char /sgoinfre/goinfre/Perso/lcabanes/docker-machine_folder/
+				echo "${CYAN}ln -s /sgoinfre/goinfre/Perso/lcabanes/docker-machine_folder/Char /Users/lcabanes/.docker/machine/machines/${END_OF_COLOR}"
+				ln -s /sgoinfre/goinfre/Perso/lcabanes/docker-machine_folder/Char /Users/lcabanes/.docker/machine/machines/
 				echo "${CYAN}docker-machine ls${END_OF_COLOR}"
 				docker-machine ls
 				echo "${CYAN}docker volume ls${END_OF_COLOR}"

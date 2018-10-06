@@ -11,8 +11,11 @@
 
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get -y install openssh-server ca-certificates
-RUN curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash
-RUN sudo EXTERNAL_URL="http://gitlab.ex03.com" apt-get install gitlab-ee
+SHELL [ "/bin/sh" , "-c" ]
+
+RUN apt-get update && apt-get -y install openssh-server ca-certificates curl
+RUN curl -o /tmp/gitlab_install_script.deb.sh https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh
+RUN bash /tmp/gitlab_install_script.deb.sh
+RUN EXTERNAL_URL="http://gitlab.ex03.com" apt-get install gitlab-ee
 
 EXPOSE 443 80 22
