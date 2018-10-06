@@ -2,8 +2,8 @@
 # https://guides.rubyonrails.org/getting_started.html
 # https://hub.docker.com/_/rails/
 
-# docker build --tag ex02 ./
-# docker run --name ex02 -ti -p 3000 --rm ex02 bash
+# docker build --tag ft_rails:on-build ./
+# docker run --name ex02 -ti -p 3000 --rm ft_rails:on-build bash
 
 FROM ruby
 
