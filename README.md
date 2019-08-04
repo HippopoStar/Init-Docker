@@ -20,17 +20,17 @@ Renommer le systeme de maniere permanente : `vim /etc/hostname`
 
 `apt-get update && apt-get -y install sudo`  
 
-1. Vous devez creer un utilisateur non root pour vous connecter et travailler  
+1. _Vous devez creer un utilisateur non root pour vous connecter et travailler_  
 [Reference - Reprenez le controle a l'aide de Linux](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/39044-les-utilisateurs-et-les-droits)  
 `adduser <user_login>`  
 password: 'roger'  
 
-2. Utilisez sudo pour pouvoir, depuis cet utilisateur, effectuer les operations demamdant des droits speciaux  
+2. _Utilisez sudo pour pouvoir, depuis cet utilisateur, effectuer les operations demamdant des droits speciaux_  
 `adduser <user_login> sudo`  
 
 (logout -\> login with new user account)  
 
-3. Nous ne voulons pas que vous utilisiez le service DHCP de votre machine. A vous donc de la configurer afin qu'elle ait une IP fixe et un Netmask en /30  
+3. _Nous ne voulons pas que vous utilisiez le service DHCP de votre machine. A vous donc de la configurer afin qu'elle ait une IP fixe et un Netmask en /30_  
 
 [Reference - Apprenez le fonctionnement des reseaux TCP/IP](https://openclassrooms.com/fr/courses/857447-apprenez-le-fonctionnement-des-reseaux-tcp-ip/853668-decoupage-dune-plage-dadresses)  
 
@@ -48,18 +48,18 @@ eth0
 
 `sudo vim /etc/network/interfaces`  
 
-\# 10.0.2.15
-\# 00001010.00000000.00000010.00001111
-\# Etant donne le netmask de /30
-\# l'adresse de broadcast est 10.0.2.15
-\# l'adresse de reseau est 10.0.2.12
-\# on a le choix pour la gateway et l'ip de la machine entre les 2 adresses restantes  
+\# Sur le Mac  
+\# `netstat -nr`  
+\# default Gateway 10.11.254.254  
+\# 00001010.00001011.11111110.11111110  
+\# Dans la VM Debian  
+\# 00001010.00001011.11111110.11111101 -\>  10.11.254.253/30  
 
 ```
 auto eth0
 iface eth0 inet static
-	address 10.0.2.13/30
-	gateway 10.0.2.14
+	address 10.11.254.253/30
+	gateway 10.11.254.254
 ```
 
 `sudo init 0`  
@@ -67,14 +67,15 @@ iface eth0 inet static
 VirtualBox -\> Settings -\> Network -\> Attached to :  
 	Bridged Adapter  
 
-4. Vous devez changer le port par defaut du service SSH par celui de votre choix. L'acces SSH DOIT se faire avec des publickeys. L'utilisateur root ne doit pas pouvoir se connecter en SSH  
+4. _Vous devez changer le port par defaut du service SSH par celui de votre choix. L'acces SSH DOIT se faire avec des publickeys. L'utilisateur root ne doit pas pouvoir se connecter en SSH_  
 
 `sudo apt-get update && sudo apt-get -y install openssh-server`  
 
-5. Vous devez mettre en place des regles de pare-feu (firewall) sur le serveur avec uniquement les services utilises accessibles en dehors de votre VM  
+5. _Vous devez mettre en place des regles de pare-feu (firewall) sur le serveur avec uniquement les services utilises accessibles en dehors de votre VM_  
 
 [Reference - Reprenez le controle a l'aide de Linux](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/42264-analyser-le-reseau-et-filtrer-le-trafic-avec-un-pare-feu#/id/r-42263)  
 
+Dans un script dans le dossier '/root'  
 ```
 iptables -A INPUT -p tcp --dport 2222 -j ACCEPT
 iptables -A INPUT -i lo -j ACCEPT
@@ -82,13 +83,14 @@ iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -P INPUT DROP
 ```
 
-6. Vous devez mettre en place une protection contre les DOS (Denial Of Service Attack) sur les ports ouverts de votre VM  
+
+6. _Vous devez mettre en place une protection contre les DOS (Denial Of Service Attack) sur les ports ouverts de votre VM_  
 
 fail2ban  
 
-7. Vous devez mettre en place une protection contre les scans sur les ports ouverts de votre VM  
+7. _Vous devez mettre en place une protection contre les scans sur les ports ouverts de votre VM_  
 
-8. Arretez les services dont vous n'avez pas besoin pour ce projet  
+8. _Arretez les services dont vous n'avez pas besoin pour ce projet_  
 
 9. [Init\_and\_Docker/projet\_Init/scripts/02](https://github.com/HippopoStar/Init_and_Docker/blob/master/projet_Init/scripts/02)  
 
