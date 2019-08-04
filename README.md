@@ -11,6 +11,10 @@ Projets d'initiation a l'administration systeme et reseau
 VirtualBox -\> Preferences... -\> General -\> Default Machine Folder :  
 	/Users/<my_username>/STOCKAGE/VirtualBox\ VMs  
 
+Creer le disque dur :  
+`mkdir -p /sgoinfre/goinfre/Perso/<my_username>/VB_HardDrive`  
+`VBoxManage createmedium disk --filename /sgoinfre/goinfre/Perso/<my_username>/VB_HardDrive/Roger_Skyline.vdi --sizebyte 8000000000 --format VDI --variant Fixed`  
+
  \- Init\_and\_Docker/download\_debian\_image\_openclassrooms.sh \-  
 `curl -o /Users/<my_username>/STOCKAGE/VirtualBox\ VMs/Debian8.5.vdi http://www.lalitte.com/Debian8.5.vdi`  
 
@@ -116,10 +120,20 @@ Verifier les regles en vigueur : `sudo iptables -L -v`
 6. _Vous devez mettre en place une protection contre les DOS (Denial Of Service Attack) sur les ports ouverts de votre VM_  
 
 fail2ban  
+`sudo vim /etc/fail2ban/jail.d/defaults-debian.conf`  
 
 7. _Vous devez mettre en place une protection contre les scans sur les ports ouverts de votre VM_  
 
+[Debian Wiki](https://wiki.debian-fr.xyz/Portsentry)  
+
+portsentry  
+`sudo vim /etc/portsentry/portsentry.conf`  
+
+
 8. _Arretez les services dont vous n'avez pas besoin pour ce projet_  
+
+`sudo service --list-all`  
+
 
 9. [Init\_and\_Docker/projet\_Init/scripts/02](https://github.com/HippopoStar/Init_and_Docker/blob/master/projet_Init/scripts/02)  
 
