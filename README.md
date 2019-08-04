@@ -69,7 +69,31 @@ VirtualBox -\> Settings -\> Network -\> Attached to :
 
 4. _Vous devez changer le port par defaut du service SSH par celui de votre choix. L'acces SSH DOIT se faire avec des publickeys. L'utilisateur root ne doit pas pouvoir se connecter en SSH_  
 
+[Reference - Reprenez le controle a l'aide de Linux](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/41773-la-connexion-securisee-a-distance-avec-ssh#/id/r-2282884)  
+
+Dans la VM :  
+
 `sudo apt-get update && sudo apt-get -y install openssh-server`  
+`sudo vim /etc/ssh/sshd_config`  
+
+Port 2222  
+PermitRootLogin no  
+PasswordAuthentification yes # (Dans un premier temps)  
+
+Sur le Mac :  
+
+`ssh-keygen -t rsa`  
+`ssh-copy-id -p 2222 -i /Users/<my_username>/.ssh/id_rsa.pub <user_login>@10.11.254.253`  
+
+Dans la VM :  
+`sudo vim /etc/ssh/sshd_config`  
+
+PasswordAuthentification no # (dans un second temps)  
+`sudo service ssh reload`  
+
+Sur le Mac :  
+`ssh -p 2222 lcabanes@10.11.254.253`  
+
 
 5. _Vous devez mettre en place des regles de pare-feu (firewall) sur le serveur avec uniquement les services utilises accessibles en dehors de votre VM_  
 
@@ -82,6 +106,9 @@ iptables -A INPUT -i lo -j ACCEPT
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -P INPUT DROP
 ```
+
+Appeler le script depuis la CronTab  
+Verifier les regles en vigueur : `sudo iptables -L -v`  
 
 
 6. _Vous devez mettre en place une protection contre les DOS (Denial Of Service Attack) sur les ports ouverts de votre VM_  
