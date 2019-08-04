@@ -15,6 +15,9 @@ Creer le disque dur :
 `mkdir -p /sgoinfre/goinfre/Perso/<my_username>/VB_HardDrive`  
 `VBoxManage createmedium disk --filename /sgoinfre/goinfre/Perso/<my_username>/VB_HardDrive/Roger_Skyline.vdi --sizebyte 8000000000 --format VDI --variant Fixed`  
 
+New -\> \[...\] -\> /sgoinfre/goinfre/ISO/Debian/debian-9.6.0-amd64-netinst.iso  
+
+
  \- Init\_and\_Docker/download\_debian\_image\_openclassrooms.sh \-  
 `curl -o /Users/<my_username>/STOCKAGE/VirtualBox\ VMs/Debian8.5.vdi http://www.lalitte.com/Debian8.5.vdi`  
 
