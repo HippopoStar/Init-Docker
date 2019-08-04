@@ -132,13 +132,17 @@ fail2ban
 portsentry  
 `sudo vim /etc/portsentry/portsentry.conf`  
 
+`nmap -sS -sU 10.11.254.253`  
 
 8. _Arretez les services dont vous n'avez pas besoin pour ce projet_  
 
-`sudo service --list-all`  
+`sudo service --status-all`  
 
 
 9. [Init\_and\_Docker/projet\_Init/scripts/02](https://github.com/HippopoStar/Init_and_Docker/blob/master/projet_Init/scripts/02)  
+
+Egalement au reboot  
+[Reference - Reprenez le controle a l'aide de Linux](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/41155-executer-un-programme-a-une-heure-differee#/id/r-41154)  
 
 10. [Init\_and\_Docker/projet\_Init/scripts/04](https://github.com/HippopoStar/Init_and_Docker/blob/master/projet_Init/scripts/04)  
 
