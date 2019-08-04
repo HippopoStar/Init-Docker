@@ -80,6 +80,8 @@ Port 2222
 PermitRootLogin no  
 PasswordAuthentification yes # (Dans un premier temps)  
 
+`sudo service ssh reload`  
+
 Sur le Mac :  
 
 `ssh-keygen -t rsa`  
