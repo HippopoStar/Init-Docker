@@ -119,18 +119,56 @@ iptables -P INPUT DROP
 Appeler le script depuis la CronTab  
 Verifier les regles en vigueur : `sudo iptables -L -v`  
 
+`sudo apt-get update && sudo apt-get -y install ufw`  
+`ufw reset`  
+`ufw default deny incoming`  
+`ufw default deny outgoing`  
+`ufw allow 2222/tcp`  
+`ufw allow in http`  
+`ufw allow out http`  
+`ufw allow in https`  
+`ufw allow out https`  
+`ufw allow in 53`  
+`ufw allow out 53`  
+`ufw logging on`  
+`ufw enable`  
 
 6. _Vous devez mettre en place une protection contre les DOS (Denial Of Service Attack) sur les ports ouverts de votre VM_  
 
 fail2ban  
 `sudo vim /etc/fail2ban/jail.d/defaults-debian.conf`  
+`sudo vim /etc/fail2ban/jail.d/custom.conf`  
+
+\[DEFAULT\]  
+findtime = 300  
+bantime = 1800  
+maxretry = 3  
+
+\[sshd\]  
+enabled = true  
+port = 2222  
+
+`sudo vim /etc/fail2ban/filter.d/sshd.conf`  
+	^%(prefix_line)sConnection closed by <HOST> port \d+ \[preauth\]$  
 
 7. _Vous devez mettre en place une protection contre les scans sur les ports ouverts de votre VM_  
 
 [Debian Wiki](https://wiki.debian-fr.xyz/Portsentry)  
 
 portsentry  
+`sudo vim /etc/default/portsentry`  
+
+TCP\_MODE="atcp"  
+UDP\_MODE="audp"  
+
 `sudo vim /etc/portsentry/portsentry.conf`  
+
+BLOCK\_UDP="1"  
+BLOCK\_TCP="1"  
+
+KILL\_RUN\_CMD="/sbin/iptables -I INPUT -s $TARGET$ -j DROP \  
+	&& /sbin/iptables -I INPUT -s $TARGET$ -m limit --limit 3/minute --limit-burst 5 -j LOG --log-level debug --log-prefix 'Portsentry: dropping: '"  
+
 
 `nmap -sS -sU 10.11.254.253`  
 
