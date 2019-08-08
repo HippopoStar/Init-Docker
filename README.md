@@ -59,6 +59,8 @@ eth0
 \# `netstat -nr`  
 \# default Gateway 10.11.254.254  
 \# 00001010.00001011.11111110.11111110  
+\# broadcast 10.11.254.255  
+\# network 10.11.254.252  
 \# Dans la VM Debian  
 \# 00001010.00001011.11111110.11111101 -\>  10.11.254.253/30  
 
@@ -101,7 +103,7 @@ PasswordAuthentification no # (dans un second temps)
 `sudo service ssh reload`  
 
 Sur le Mac :  
-`ssh -p 2222 lcabanes@10.11.254.253`  
+`ssh -p 2222 <user_login>@10.11.254.253`  
 
 
 5. _Vous devez mettre en place des regles de pare-feu (firewall) sur le serveur avec uniquement les services utilises accessibles en dehors de votre VM_  
@@ -149,7 +151,7 @@ enabled = true
 port = 2222  
 
 `sudo vim /etc/fail2ban/filter.d/sshd.conf`  
-	^%(prefix_line)sConnection closed by <HOST> port \d+ \[preauth\]$  
+	^%(__prefix_line)sConnection closed by <HOST> port \d+ \[preauth\]$  
 
 7. _Vous devez mettre en place une protection contre les scans sur les ports ouverts de votre VM_  
 
@@ -172,6 +174,8 @@ KILL\_RUN\_CMD="/sbin/iptables -I INPUT -s $TARGET$ -j DROP \
 
 `nmap -sS -sU 10.11.254.253`  
 
+`iptables -L -v`  
+
 8. _Arretez les services dont vous n'avez pas besoin pour ce projet_  
 
 `sudo service --status-all`  
@@ -180,6 +184,10 @@ KILL\_RUN\_CMD="/sbin/iptables -I INPUT -s $TARGET$ -j DROP \
 9. [Init\_and\_Docker/projet\_Init/scripts/02](https://github.com/HippopoStar/Init_and_Docker/blob/master/projet_Init/scripts/02)  
 
 Egalement au reboot  
+
+0 4 * * 1 apt-get update && apt-get upgrade >> /var/log/update\_script.log 2>&1  
+@reboot apt-get update && apt-get upgrade >> /var/log/update\_script.log 2>&1  
+
 [Reference - Reprenez le controle a l'aide de Linux](https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/41155-executer-un-programme-a-une-heure-differee#/id/r-41154)  
 
 10. [Init\_and\_Docker/projet\_Init/scripts/04](https://github.com/HippopoStar/Init_and_Docker/blob/master/projet_Init/scripts/04)  
