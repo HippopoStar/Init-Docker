@@ -1,6 +1,11 @@
 # Init-Docker
 Projets d'initiation a l'administration systeme et reseau
 
+## Liens utiles
+[Install Docker-CE for Ubuntu - Convenience Script](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-convenience-script)  
+[DockerFile Best Practices](https://github.com/HippopoStar/Init_and_Docker.git)  
+[DockerHub - Alpine](https://hub.docker.com/_/alpine)  
+
 ## roger-skyline-1
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/1510/roger-skyline-1.5.fr.pdf)  
 `mkdir -p /sgoinfre/goinfre/Perso/<my_username>`  
