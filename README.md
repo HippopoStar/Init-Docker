@@ -3,7 +3,7 @@ Projets d'initiation a l'administration systeme et reseau
 
 ## Liens utiles
 [Install Docker-CE for Ubuntu - Convenience Script](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-convenience-script)  
-[DockerFile Best Practices](https://github.com/HippopoStar/Init_and_Docker.git)  
+[DockerFile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)  
 [DockerHub - Alpine](https://hub.docker.com/_/alpine)  
 
 ## roger-skyline-1
